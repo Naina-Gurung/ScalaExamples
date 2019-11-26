@@ -1,0 +1,3 @@
+uid, factor, name
+123,fact, naina
+321,fact, gurung

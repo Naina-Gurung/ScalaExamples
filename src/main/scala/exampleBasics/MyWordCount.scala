@@ -8,7 +8,7 @@ object MyWordCount {
 
     //create a spark configuration parameter
     val conf= new SparkConf()
-    conf.setAppName("Word Cound")
+    conf.setAppName("Word Count")
     conf.setMaster("local")
 
     //create a spark context object
