@@ -1,5 +1,8 @@
 package exampleBasics
 
+//Given two string: write a function that will return true if one string is a rotation of the other string
+//eg: 'bca' and 'cab' are rotation of 'abc'
+// 'barbazfoo' and 'oobarbazf' are rotation of 'foobarbaz' and it should return true.
 
 object CheckStringRotation {
 
