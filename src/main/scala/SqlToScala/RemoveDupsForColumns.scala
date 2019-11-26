@@ -14,7 +14,7 @@ object RemoveDupsForColumns {
     val column = new Array[String](2);
     val arrlist = new util.ArrayList[String]()
 
-    val filename = "/Users/z002gh2/naina/GITREPO/WorkspaceLearning/LearningScala/src/main/scala/SqlToScala/data.csv"
+    val filename = "./data.csv"
     for (line <- Source.fromFile(filename).getLines) {
       column(0) = line.split(",")(0)
       column(1) = line.split(",")(1)

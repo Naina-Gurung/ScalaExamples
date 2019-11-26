@@ -11,7 +11,7 @@ object CumulativeAdditionTransactions {
   def main(args: Array[String]): Unit = {
     val spark= SparkSession.builder().master("local").appName("Get the Balancing Amt after transactions").getOrCreate()
 
-    val inpData=spark.read.format("csv").option("delimiter","|").option("header","true").option("inferSchema","true").load("/Users/z002gh2/naina/GITREPO/WorkspaceLearning/LearningScala/src/main/scala/SqlToScala/transactions.csv")
+    val inpData=spark.read.format("csv").option("delimiter","|").option("header","true").option("inferSchema","true").load("./transactions.csv")
 
 
     val tData=inpData.withColumn("amt",

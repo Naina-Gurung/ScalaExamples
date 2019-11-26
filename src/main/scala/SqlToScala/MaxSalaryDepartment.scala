@@ -15,7 +15,7 @@ object MaxSalaryDepartment {
     val  spark = new SQLContext(sc)
     import spark.implicits._
 
-    val file="/Users/z002gh2/naina/GITREPO/WorkspaceLearning/LearningScala/src/main/scala/SqlToScala/employee_salary.csv";
+    val file="./employee_salary.csv";
 
     //approach 1:
  /*   val emp = sc.textFile(file)
