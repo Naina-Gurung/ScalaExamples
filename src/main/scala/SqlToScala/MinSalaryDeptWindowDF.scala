@@ -27,10 +27,35 @@ object MinSalaryDeptWindowDF {
 
     val df=simpleData.toDF("Name","Department","Salary")
 
+
     val w2= Window.partitionBy("Department").orderBy("Salary")
     df.withColumn("row",row_number.over(w2)).where($"row" === 1).drop("row").show()
 
-
-
   }
 }
+/* input
++-------+----------+------+
+|   Name|Department|Salary|
++-------+----------+------+
+|  James|     Sales|  3000|
+|Michael|     Sales|  4600|
+| Robert|     Sales|  4100|
+|  Maria|   Finance|  3000|
+|  Raman|   Finance|  3000|
+|  Scott|   Finance|  3300|
+|    Jen|   Finance|  3900|
+|   Jeff| Marketing|  3000|
+|  Kumar| Marketing|  2000|
++-------+----------+------+
+
+output:
++-----+----------+------+
+| Name|Department|Salary|
++-----+----------+------+
+|James|     Sales|  3000|
+|Maria|   Finance|  3000|
+|Kumar| Marketing|  2000|
++-----+----------+------+
+
+
+ */

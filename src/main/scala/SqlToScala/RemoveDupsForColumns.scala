@@ -34,3 +34,28 @@ object RemoveDupsForColumns {
 
   }
 }
+
+/* input:
+a_name,b_name
+dorry,madhu
+madhu,dorry
+dorry,nemo
+nemo,dorry
+dorry,usher
+madhu,nemo
+nemo,madhu
+usher,dorry
+madhu,usher
+usher,madhu
+nemo,usher
+usher,nemo
+
+output:
+a_name,b_name
+dorry,madhu
+dorry,nemo
+dorry,usher
+madhu,nemo
+madhu,usher
+nemo,usher
+ */
