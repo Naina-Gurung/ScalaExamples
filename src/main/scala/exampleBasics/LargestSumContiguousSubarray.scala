@@ -20,7 +20,7 @@ object LargestSumContiguousSubarray {
     var max_so_far : Int = 0;
     var max_ending_here : Int = 0 ;
 
-    for(i <- 0 until(arrStr.size) ){
+    for(i <- 0 until len){
       max_ending_here = max_ending_here + arrStr(i)
       if(max_ending_here < 0 ){
         max_ending_here = 0;

@@ -28,15 +28,15 @@ object Employee {
 
     import spark.implicits._
 
-   val data = sc.parallelize(List(("a",10),("b",20),("c",30)))
-    data.collect().foreach(println)
-    val ItemDF = data.map(x=> ItemInfo(x._1,x._2)).toDF()
-    ItemDF.createOrReplaceTempView("Item_tbl")
-    val rankedItems = spark.sql("select item, quantity, rank() over(order by quantity desc) as rank from Item_tbl")
-    rankedItems.collect().foreach(println)
+//   val data = sc.parallelize(List(("a",10),("b",20),("c",30)))
+//    data.collect().foreach(println)
+//    val ItemDF = data.map(x=> ItemInfo(x._1,x._2)).toDF()
+//    ItemDF.createOrReplaceTempView("Item_tbl")
+//    val rankedItems = spark.sql("select item, quantity, rank() over(order by quantity desc) as rank from Item_tbl")
+//    rankedItems.collect().foreach(println)
 
 
-  /*  val rdd1 = sc.parallelize(Array((1,2),(2,3),(1,3),(2,4)))
+    val rdd1 = sc.parallelize(Array((1,2),(2,3),(1,3),(2,4)))
     val gRdd = rdd1.groupByKey()
     val indxRdd = gRdd.mapValues(a => {
       val b = a.toArray
@@ -50,7 +50,7 @@ object Employee {
     })
 
     indxRdd.collectAsMap().foreach(println)
-    (1,2)
+   /* (1,2)
     (1,3)
     (2,3)
     (2,4)*/

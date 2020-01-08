@@ -18,7 +18,7 @@ object LazyEvaluationCheck {
       3
     }
 
-    println(s"${x}")
+    println(s"${y}")
 
 
 
