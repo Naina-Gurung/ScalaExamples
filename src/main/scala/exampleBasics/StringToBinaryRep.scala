@@ -3,7 +3,6 @@ package exampleBasics
 import scala.collection.immutable.HashMap
 
 
-
 object StringToBinaryRep  {
 
   val userDetails = HashMap("1" -> "ab",
