@@ -35,8 +35,8 @@ class UsingClassLocation(sc : SparkContext) {
       val context = new SparkContext(conf)
       val job = new UsingClassLocation(context)
       val results = job.run(transactionsIn, usersIn)
-      val output = getClass.getResource("/output").getPath
-      results.saveAsTextFile(output)
+      //val output = getClass.getResource("/output").getPath
+      results.saveAsTextFile("./src/main/resources/output")
       context.stop()
     }
   }
