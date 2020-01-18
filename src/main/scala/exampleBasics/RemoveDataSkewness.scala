@@ -29,20 +29,20 @@ object RemoveDataSkewness {
       .rdd
       .mapPartitionsWithIndex{case (i,rows) => Iterator((i,rows.size))}
       .toDF("partition_number","number_of_records")
-      .show(false)
+      .show(30)
 
 
     println("After Salting")
 
     val slatedDF = df.withColumn("salt", substring(rand(),3,4).cast("bigint"))
 
-    val BPart = slatedDF.repartition(2,col("salt"))
+    val BPart = slatedDF.repartition(10,col("salt"))
 
     BPart
       .rdd
       .mapPartitionsWithIndex{case (i,rows) => Iterator((i,rows.size))}
       .toDF("partition_number","number_of_records")
-      .show(false)
+      .show(100)
 
 
   }
