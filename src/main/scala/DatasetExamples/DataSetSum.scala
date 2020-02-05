@@ -1,9 +1,10 @@
 package DatasetExamples
 
+import exampleBasics.MyWordCount.getClass
 import org.apache.log4j.{Level, Logger}
-import org.apache.spark.sql.{DataFrame, SQLContext, SparkSession}
+import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.types.{IntegerType, StringType, StructField, StructType}
-import  org.apache.spark.sql.functions._
+import org.apache.spark.sql.functions._
 
 
 object DataSetSum {
@@ -17,16 +18,16 @@ object DataSetSum {
     val spark=SparkSession.builder().appName("Testing DataSet").master("local").getOrCreate()
     val customSchema= StructType(Seq(StructField("userid",StringType,true),StructField("color",StringType,true),StructField("count",IntegerType,true)))
 
+    val path=getClass.getResource("/event.csv").getPath
 
     import spark.implicits._
-    val result= spark.read.schema(customSchema).option("delimiter",",").option("header",false).csv("/Users/z002gh2/naina/LEARNINGS/ScalaExamples/src/main/resources/event.csv").as[BckgrndTest]
+    val result= spark.read.schema(customSchema).option("delimiter",",").option("header",false).csv(path).as[BckgrndTest]
 
 
 
     val finalResult= result.groupBy("color").agg(expr = sum("count") as "cnt")
 
-
-finalResult.show()
+    finalResult.show()
     spark.stop()
 
   }
