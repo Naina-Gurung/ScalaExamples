@@ -12,10 +12,12 @@ object NestedJson {
   def main(args: Array[String]): Unit = {
     val spark=SparkSession.builder().master("local").appName("PArsing Nested JSon").getOrCreate()
 
+    val EmpPath=getClass.getResource("/Employee.json").getPath
+    val DeptPath=getClass.getResource("/Dept.json").getPath
+    val outPath=getClass.getResource("/Employee_output").getPath
+    val empData=spark.read.json(EmpPath)
 
-    val empData=spark.read.json("/Users/z002gh2/naina/LEARNINGS/ScalaExamples/src/main/resources/Employee.json")
-
-    val deptData=spark.read.json("/Users/z002gh2/naina/LEARNINGS/ScalaExamples/src/main/resources/Dept.json")
+    val deptData=spark.read.json(DeptPath)
 
 
     val emp= empData
@@ -34,7 +36,7 @@ object NestedJson {
 
     println(emp.repartition(4,col("state")).rdd.getNumPartitions)
 
-    emp.write.csv("/Users/z002gh2/naina/LEARNINGS/ScalaExamples/src/main/resources/Employee_output")
+    emp.write.csv(outPath)
 
     println("-----------------------------------------------------")
 
