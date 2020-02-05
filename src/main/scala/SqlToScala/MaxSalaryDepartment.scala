@@ -6,7 +6,7 @@ import org.apache.spark.sql.{SQLContext, SparkSession}
 
 
 
-object MaxSalaryDepartment {
+object  MaxSalaryDepartment {
   case class Dept(e_name : String,dept_name: String,month:String, Salary : Int)
   def main(args: Array[String]): Unit = {
 
