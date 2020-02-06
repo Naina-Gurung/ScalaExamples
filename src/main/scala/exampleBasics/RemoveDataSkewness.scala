@@ -44,6 +44,56 @@ object RemoveDataSkewness {
       .toDF("partition_number","number_of_records")
       .show(100)
 
+    //df:
+    //+--------------------+---+------+-----+----+------+
+    //|             address|age|deptid|ename|  id|salary|
+    //+--------------------+---+------+-----+----+------+
+    //|[Bangalore,Karnat...| 40|    11|SMITH|2222| 12000|
+    //|  [HYDERABAD,Andhra]| 23|    21| FANG|2222| 30000|
+    //|  [HYDERABAD,Andhra]| 23|    21| FANG|1111| 30000|
+    //|  [HYDERABAD,Andhra]| 23|    21| FANG|1111| 30000|
+    //|  [HYDERABAD,Andhra]| 23|    21| FANG|1111| 30000|
+    //|  [HYDERABAD,Andhra]| 23|    21| FANG|1111| 30000|
+    //|  [HYDERABAD,Andhra]| 23|    21| FANG|1111| 30000|
+    //|  [HYDERABAD,Andhra]| 23|    21| FANG|1111| 30000|
+    //|  [HYDERABAD,Andhra]| 23|    21| FANG|1111| 30000|
+    //|  [HYDERABAD,Andhra]| 23|    21| FANG|1111| 30000|
+    //|  [HYDERABAD,Andhra]| 23|    21| FANG|1111| 30000|
+    //|  [HYDERABAD,Andhra]| 23|    21| FANG|1111| 30000|
+    //|  [HYDERABAD,Andhra]| 23|    21| FANG|1111| 30000|
+    //|  [HYDERABAD,Andhra]| 23|    21| FANG|1111| 30000|
+    //|  [HYDERABAD,Andhra]| 23|    21| FANG|1111| 30000|
+    //|  [HYDERABAD,Andhra]| 23|    21| FANG|1111| 30000|
+    //|  [HYDERABAD,Andhra]| 23|    21| FANG|1111| 30000|
+    //|  [HYDERABAD,Andhra]| 23|    21| FANG|1111| 30000|
+    //|  [HYDERABAD,Andhra]| 23|    21| FANG|1111| 30000|
+    //|  [HYDERABAD,Andhra]| 23|    21| FANG|1111| 30000|
+    //+--------------------+---+------+-----+----+------+
+    //only showing top 20 rows
+
+    //Before Salting
+    //+----------------+-----------------+
+    //|partition_number|number_of_records|
+    //+----------------+-----------------+
+    //|               0|                2|
+    //|               1|               84|
+    //+----------------+-----------------+
+
+    //After Salting
+    //+----------------+-----------------+
+    //|partition_number|number_of_records|
+    //+----------------+-----------------+
+    //|               0|                9|
+    //|               1|                8|
+    //|               2|               10|
+    //|               3|                4|
+    //|               4|               11|
+    //|               5|                9|
+    //|               6|               12|
+    //|               7|                7|
+    //|               8|                9|
+    //|               9|                7|
+    //+----------------+-----------------+
 
   }
 

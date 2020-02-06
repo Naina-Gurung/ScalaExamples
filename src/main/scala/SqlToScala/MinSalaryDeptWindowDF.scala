@@ -9,6 +9,7 @@ import org.apache.spark.sql.functions._
 object MinSalaryDeptWindowDF {
 
   def main(args: Array[String]): Unit = {
+
     val simpleData=Seq(("James","Sales",3000),
       ("Michael","Sales",4600),
       ("Robert","Sales",4100),
@@ -28,7 +29,7 @@ object MinSalaryDeptWindowDF {
     val df=simpleData.toDF("Name","Department","Salary")
 
 
-    val w2= Window.partitionBy("Department").orderBy("Salary")
+    val w2= Window.partitionBy("Department").orderBy(col("Salary").asc)
     df.withColumn("row",row_number.over(w2)).where($"row" === 1).drop("row").show()
 
   }
