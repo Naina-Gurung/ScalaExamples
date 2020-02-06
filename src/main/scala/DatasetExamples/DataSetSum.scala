@@ -9,7 +9,7 @@ import org.apache.spark.sql.functions._
 
 object DataSetSum {
   Logger.getLogger("org").setLevel(Level.OFF)
-  Logger.getLogger("org").setLevel(Level.OFF)
+  Logger.getLogger("akka").setLevel(Level.OFF)
 
   case class BckgrndTest(userid:String,color: String,count:Integer)
 
@@ -27,6 +27,7 @@ object DataSetSum {
 
     val finalResult= result.groupBy("color").agg(expr = sum("count") as "cnt")
 
+     print(finalResult.getClass)
     finalResult.show()
     spark.stop()
 
