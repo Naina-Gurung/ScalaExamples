@@ -18,9 +18,18 @@ object WriteToNestedJson {
     data.createOrReplaceTempView("employee")
 
     spark.sql("select company, department, collect_list(name) as department_employee from employee group by company, department ").createOrReplaceTempView("EmployeeDept")
-
+    //|company|department|department_employee|
+    //+-------+----------+-------------------+
+    //|  apple|technology|            [shiva]|
+    //| google|     sales|          [jessica]|
+    //| google|     admin|         [samantha]|
+    //| google|technology|   [sita, parvathi]|
+    //|  apple|     sales|      [ram, laxman]|
+    //+-------+----------+-------------------+
 
     spark.sql("select company,collect_list(struct(department,department_employee))  as deptInfo from EmployeeDept group by company  ").toJSON.show(false)
+
+    //{"company":"apple","deptInfo":[{"department":"technology","department_employee":["shiva"]},{"department":"sales","department_employee":["ram","laxman"]}]}
   }
 
 }
